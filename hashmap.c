@@ -113,6 +113,17 @@ Pair * firstMap(HashMap * map) {
 }
 
 Pair * nextMap(HashMap * map) {
-
+    if (map == NULL || map->buckets == NULL) {
+        return NULL;
+    }
+    
+    long next = map->current + 1;
+    for (long i = next; i < map->capacity; i++) {
+        Pair* pair = map->buckets[i];
+        if (pair != NULL) {
+            map->current = i;
+            return pair;
+        }
+    }
     return NULL;
 }
