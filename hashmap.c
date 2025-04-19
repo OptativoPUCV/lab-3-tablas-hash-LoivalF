@@ -98,9 +98,13 @@ Pair * searchMap(HashMap * map,  char * key) {
 }
 
 Pair * firstMap(HashMap * map) {
+    if (map->size == 0) {
+        return NULL;
+    }
+    
     for (long i = 0; i < map->capacity; i++) {
         Pair* pair = map->buckets[i];
-        if (map->buckets[i] != NULL) {
+        if (pair != NULL) {
             map->current = i;
             return pair;
         }
