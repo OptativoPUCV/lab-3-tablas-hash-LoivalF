@@ -82,6 +82,7 @@ Pair * searchMap(HashMap * map,  char * key) {
     long clave = hash(key, map->capacity);
     while (map->buckets[clave] != NULL) {
         if (is_equal(map->buckets[clave]->key, key)) {
+            map->current = clave;
             return map->buckets[clave];
         }
         clave = (clave + 1) % map->capacity;
