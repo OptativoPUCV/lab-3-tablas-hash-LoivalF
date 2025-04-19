@@ -80,6 +80,7 @@ void eraseMap(HashMap * map,  char * key) {
             map->buckets[clave]->key = NULL;
             map->buckets[clave]->value = NULL;
             map->size--;
+            return;
         }
         clave = (clave + 1) % map->capacity;
     }
@@ -104,12 +105,12 @@ Pair * firstMap(HashMap * map) {
 
     for (long i = 0; i < map->capacity; i++) {
         Pair* pair = map->buckets[i];
-        if (pair != NULL) {
+        if (pair != NULL && pair->key != NULL) {
             map->current = i;
             return pair;
         }
     }
-    return map->buckets[map->current]; 
+    return NULL; 
 }
 
 Pair * nextMap(HashMap * map) {
