@@ -80,7 +80,7 @@ void eraseMap(HashMap * map,  char * key) {
             map->buckets[clave]->key = NULL;
             map->buckets[clave]->value = NULL;
             map->size--;
-            return;
+    
         }
         clave = (clave + 1) % map->capacity;
     }
